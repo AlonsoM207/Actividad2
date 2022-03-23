@@ -10,7 +10,12 @@ Exercises
 
 from random import randrange
 from turtle import *
-
+import random
+lista=["purple", "orange", "blue", "gray", "green"]
+s=random.choice(lista)
+c=random.choice(lista)
+print (s)
+print (c)
 from freegames import square, vector
 
 food = vector(0, 0)
@@ -49,11 +54,12 @@ def move():
         snake.pop(0)
 
     clear()
-
+    
     for body in snake:
-        square(body.x, body.y, 9, 'black')
+        
+        square(body.x, body.y, 9, s)
 
-    square(food.x, food.y, 9, 'green')
+    square(food.x, food.y, 9, c)
     update()
     ontimer(move, 100)
 
