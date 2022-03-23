@@ -7,12 +7,41 @@ Exercises
 3. How would you move the food?
 4. Change the snake to respond to mouse clicks.
 """
-
+import random
 from random import randrange
 from turtle import *
 
 from freegames import square, vector
 
+R1 = random.randint(1,5)
+R2 = random.randint(1,5)
+
+if R1 == R2:
+    R1 = random.randint(1,5)
+    R2 = random.randint(1,5)
+
+if R1 == 1:
+    bodyColor = 'black'
+elif R1 == 2:
+    bodyColor = 'blue'
+elif R1 == 3:
+    bodyColor = 'green'
+elif R1 == 4:
+    bodyColor = 'orange'
+elif R1 == 5:
+    bodyColor = 'purple'
+        
+if R2 == 1:
+    foodColor = 'black'
+elif R2 == 2:
+    foodColor = 'blue'
+elif R2 == 3:
+    foodColor = 'green'
+elif R2 == 4:
+    foodColor = 'orange'
+elif R2 == 5:
+    foodColor = 'purple'
+    
 food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
@@ -43,17 +72,17 @@ def move():
 
     if head == food:
         print('Snake:', len(snake))
-        food.x = food.x + randrange(-1,1) * 10
-        food.y = food.y + randrange(-1,1) * 10
+        food.x = randrange(-15, 15) * 10
+        food.y = randrange(-15, 15) * 10
     else:
         snake.pop(0)
 
     clear()
-
+       
     for body in snake:
-        square(body.x, body.y, 9, 'black')
+        square(body.x, body.y, 9, bodyColor)
 
-    square(food.x, food.y, 9, 'green')
+    square(food.x, food.y, 9, foodColor)
     update()
     ontimer(move, 100)
 
@@ -67,4 +96,4 @@ onkey(lambda: change(-10, 0), 'Left')
 onkey(lambda: change(0, 10), 'Up')
 onkey(lambda: change(0, -10), 'Down')
 move()
-
+done()
