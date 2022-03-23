@@ -14,8 +14,7 @@ import random
 lista=["purple", "orange", "blue", "gray", "green"]
 s=random.choice(lista)
 c=random.choice(lista)
-print (s)
-print (c)
+
 from freegames import square, vector
 
 food = vector(0, 0)
