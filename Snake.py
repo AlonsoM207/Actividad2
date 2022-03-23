@@ -23,6 +23,15 @@ def change(x, y):
     aim.x = x
     aim.y = y
 
+def dentro_pantalla(food):
+    x = food.x
+    y = food.y
+    
+    if -190 < x < 190 and -190 < y < 190:
+        return True
+    else:
+        return False
+    
 
 def inside(head):
     """Return True if head inside boundaries."""
@@ -43,8 +52,26 @@ def move():
 
     if head == food:
         print('Snake:', len(snake))
-        food.x = food.x + randrange(-1,1) * 10
-        food.y = food.y + randrange(-1,1) * 10
+        
+        #Verificar que la comida no se quede en el mismo lugar
+        cambio_x = randrange(-1,2) * 10
+        while cambio_x == 0:
+            cambio_x = randrange(-1,2) * 10
+
+        cambio_y = randrange(-1,2) * 10
+        while cambio_y == 0:
+            cambio_y = randrange(-1,2) * 10
+        
+        food.x = food.x + cambio_x 
+        print (food.x)
+        food.y = food.y + cambio_y
+        print (food.y)
+        
+        # verificar que la comida esté dentro de la pantalla
+        while (dentro_pantalla(food)) == False:
+            food.x = food.x + randrange(-1,1) * 10
+            food.y = food.y + randrange(-1,1) * 10
+            
     else:
         snake.pop(0)
 
