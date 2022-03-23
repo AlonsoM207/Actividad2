@@ -16,6 +16,8 @@ from freegames import square, vector
 food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
+lista= [ 'black', 'purple', 'green', 'blue', 'blue']
+sk= random.choice(lista)
 
 
 def change(x, y):
@@ -51,7 +53,7 @@ def move():
     clear()
 
     for body in snake:
-        square(body.x, body.y, 9, 'black')
+        square(body.x, body.y, 9, sk)
 
     square(food.x, food.y, 9, 'green')
     update()
