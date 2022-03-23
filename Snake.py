@@ -43,8 +43,8 @@ def move():
 
     if head == food:
         print('Snake:', len(snake))
-        food.x = randrange(-15, 15) * 10
-        food.y = randrange(-15, 15) * 10
+        food.x = food.x + randrange(-1,1) * 10
+        food.y = food.y + randrange(-1,1) * 10
     else:
         snake.pop(0)
 
@@ -67,4 +67,4 @@ onkey(lambda: change(-10, 0), 'Left')
 onkey(lambda: change(0, 10), 'Up')
 onkey(lambda: change(0, -10), 'Down')
 move()
-done()
+
